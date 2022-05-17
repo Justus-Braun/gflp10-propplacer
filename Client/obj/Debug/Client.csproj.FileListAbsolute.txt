@@ -1,0 +1,11 @@
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\bin\Debug\CitizenFX.Core.Client.dll
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\bin\Debug\CitizenFX.Core.Client.xml
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\obj\Debug\Client.csproj.CopyComplete
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\bin\Debug\gflp10-propplacer.net.dll
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\bin\Debug\gflp10-propplacer.net.pdb
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\obj\Debug\gflp10-propplacer.net.dll
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\obj\Debug\gflp10-propplacer.net.pdb
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\bin\Debug\Nexd.ESX.Client.dll
+K:\FiveM\NobleV\noblev\resources\[addon]\[gflp10]\gflp10-propplacer\Client\bin\Debug\Nexd.ESX.Shared.dll
