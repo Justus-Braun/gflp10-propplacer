@@ -20,9 +20,11 @@ namespace gflp10_propplacer
             if (GetCurrentResourceName() != resourceName) return;
 
             RegisterCommand("showPropMenu", new Action<int, List<object>, string>(ShowPropMenu), false);
+
+            RegisterKeyMapping("showPropMenu", "Show Prop Menu", "keyboard", "F6");
         }
 
-        private void ShowPropMenu(int source, List<object> args, string raw)
+        private async void ShowPropMenu(int source, List<object> args, string raw)
         {
             ESX.UI.Menu.CloseAll();
 
@@ -46,7 +48,7 @@ namespace gflp10_propplacer
                     value = "new"
                 });
             }
-
+            
             ESX.UI.Menu.Open("default", GetCurrentResourceName(), "props_menu", new ESX.UI.MenuData
             {
                 title = "Default Menu Title",
@@ -70,6 +72,44 @@ namespace gflp10_propplacer
             {
                 menu.close();
             });
+
+            while (ESX.UI.Menu.IsOpen("default", GetCurrentResourceName(), "props_menu"))
+            {
+                ShowIds();
+
+                await Delay(1);
+            }
+        }
+
+        private void ShowIds()
+        {
+            for (int i = 0; i < _objects.Count; i++)
+            {
+                int obj = _objects[i];
+
+                string text = $"[{i}]";
+
+                Vector3 entityCoords = GetEntityCoords(obj, false);
+
+                Vector3 playerCoords = GetGameplayCamCoord();
+
+                float dist = GetDistanceBetweenCoords(entityCoords.X, entityCoords.Y, entityCoords.Z, playerCoords.X,
+                    playerCoords.Y, playerCoords.Z, true);
+
+                float scale = 200 / (GetGameplayCamFov() * dist);
+
+                SetTextColour(255, 255, 255, 255);
+                SetTextScale(0.0f, scale);
+                SetTextDropshadow(0, 0, 0, 0, 55);
+                SetTextDropShadow();
+                SetTextCentre(true);
+
+                BeginTextCommandDisplayText("STRING");
+                AddTextComponentSubstringPlayerName(text);
+                SetDrawOrigin(entityCoords.X, entityCoords.Y, entityCoords.Z + 1, 0);
+                EndTextCommandDisplayText(0.0f, 0.0f);
+                ClearDrawOrigin();
+            }
         }
 
         private void OpenPropMenu(int index)
