@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CitizenFX.Core;
 using System.Threading.Tasks;
-using CitizenFX.Core;using CitizenFX.Core.Native;
 using static CitizenFX.Core.Native.API;
-using gflp10_propplacer;
 
 namespace gflp10_propplacer
 {
@@ -22,19 +17,16 @@ namespace gflp10_propplacer
 
             await MoveProp(obj);
 
-            Debug.WriteLine(prop.ToString());
-
             return obj;
         }
 
         public static async Task MoveProp(int obj)
         {
-            Debug.WriteLine(obj.ToString());
 
             FreezeEntityPosition(obj, true);
-
+            
             float speed = 1f;
-
+            
             do
             {
                 DisableControls(true);

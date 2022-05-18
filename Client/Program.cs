@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
-using CitizenFX.Core;
+﻿using CitizenFX.Core;
 using Nexd.ESX.Client;
+using System;
+using System.Collections.Generic;
 using static CitizenFX.Core.Native.API;
 
 namespace gflp10_propplacer
@@ -22,17 +18,8 @@ namespace gflp10_propplacer
         private void OnClientResourceStart(string resourceName)
         {
             if (GetCurrentResourceName() != resourceName) return;
-            
-            RegisterCommand("showPropMenu", new Action<int, List<object>, string>(ShowPropMenu), false);
 
-            RegisterCommand("del", new Action<int, List<object>, string>((source, args, raw) =>
-            {
-                foreach (var obj in _objects)
-                {
-                    int x = obj;
-                    DeleteObject(ref x);
-                }
-            }), false);
+            RegisterCommand("showPropMenu", new Action<int, List<object>, string>(ShowPropMenu), false);
         }
 
         private void ShowPropMenu(int source, List<object> args, string raw)
@@ -44,7 +31,6 @@ namespace gflp10_propplacer
             // ReSharper disable once LoopCanBeConvertedToQuery
             for (var index = 0; index < _objects.Count; index++)
             {
-                var obj = _objects[index];
                 menuElements.Add(new ESX.UI.MenuElement
                 {
                     label = $"[{index}]",
@@ -102,7 +88,6 @@ namespace gflp10_propplacer
                 }
             };
 
-
             ESX.UI.Menu.Open("default", GetCurrentResourceName(), "prop_menu", new ESX.UI.MenuData
             {
                 title = "Default Menu Title",
@@ -116,12 +101,11 @@ namespace gflp10_propplacer
                     menu.close();
                     if (data.current.value.ToString() == "move")
                     {
-                        menu.close();
+                        await Delay(500);
                         await PropHandler.MoveProp(prop);
                     }
                     else if (data.current.value.ToString() == "del")
                     {
-                        menu.close();
                         DeleteObject(ref prop);
                         _objects.RemoveAt(index);
                     }
